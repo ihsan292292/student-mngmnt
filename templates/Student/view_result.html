@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content container-fluid">
+    <div class="page-header">
+       <div class="row align-items-center">
+          <div class="col">
+             <h3 class="page-title">Result</h3>
+             <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active">Result</li>
+             </ul>
+          </div>
+          <div class="col-auto text-right float-right ml-auto">
+             <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+             <a href="{% url 'add_subject' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+          </div>
+       </div>
+    </div>
+    {% include 'includes/messages.html' %}
+    <div class="row">
+       <div class="col-sm-12">
+          <div class="card card-table">
+             <div class="card-body">
+                <div class="table-responsive">
+                   <table class="table table-hover table-center mb-0 datatable" id="table_id">
+                      <thead>
+                         <tr>
+                            <th>ID</th>
+                            <th>Subject</th>
+                            <th>Assignment Mark</th>
+                            <th>Exam Mark</th>
+                            <th>Status</th>
+                         </tr>
+                      </thead>
+                      <tbody>
+                        {% for i in result %}
+                         <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.subject.name}}</td>
+                            <td>{{i.assignment_mark}}</td>
+                            <td>{{i.exam_mark}}</td>
+                            <td>
+                               {% if mark > 35 %}
+                                <span class="badge badge-success">PASS</span>
+                               {% else %}
+                               <span class="badge badge-danger">FAIL</span>
+                               {% endif %}
+                            </td>
+                         </tr>
+                         {% endfor %}
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+{% endblock %}

@@ -19,23 +19,23 @@
     <div class="col-sm-12">
        <div class="card">
           <div class="card-body">
-             <form action="{% url 'staff_apply_leave_save' %}" method="post">
+             <form action="{% url 'student_leave_save' %}" method="post">
                 {% csrf_token %}
                    <div class="col-12">
                       <h5 class="form-title"><span>Apply For Leave</span></h5>
                    </div>
-                        {% include 'includes/messages.html' %}
+                   {% include 'includes/messages.html' %}
                         
                    <div class="col-sm-11">
                       <div class="form-group">
                          <label>Leave Date</label>
-                         <input type="date" class="form-control" name="leave_date">
+                         <input type="date" class="form-control" name="student_leave_date">
                       </div>
                    </div>
                    <div class="col-sm-11">
                     <div class="form-group">
                        <label>Leave Message</label>
-                       <textarea class="form-control" name="leave_message" style="height:250px" required></textarea>
+                       <textarea class="form-control" name="student_leave_message" style="height:250px" required></textarea>
                     </div>
                  </div>
                  <br>
@@ -76,7 +76,7 @@
                                     </tr>
                                  </thead>
                                  <tbody>
-                                    {% for i in staff_leave_history %}
+                                    {% for i in student_leave_history %}
                                     <tr>
                                        <td>{{i.date}}</td>
                                        <td>{{i.message}}</td>
