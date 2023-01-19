@@ -67,18 +67,6 @@
              <li class="{% active_link 'student_leave_view' 'active' %}">
                <a href="{%url 'student_leave_view'%}"><i class="fas fa-envelope"></i> <span>Student leave</span></a>
              </li>
-             <li class="menu-title">
-                <span>Pages</span>
-             </li>
-             <li class="submenu">
-                <a href="#"><i class="fas fa-shield-alt"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-                <ul>
-                   <li><a href="login.html">Login</a></li>
-                   <li><a href="register.html">Register</a></li>
-                   <li><a href="forgot-password.html">Forgot Password</a></li>
-                   <li><a href="error-404.html">Error Page</a></li>
-                </ul>
-             </li>
              
           {% elif user.user_type == '2' %}
           <ul>
@@ -130,9 +118,6 @@
             </li>
             <li class="{% active_link 'student_notification' 'active' %}">
                <a href="{% url 'student_notification' %}" ><i class="fas fa-bell"></i><span>Notification</span></a>
-            </li>
-            <li class="">
-            <a href="{% url 'login' %}"><i class="fas fa-bell"></i><span>Logout</span></a>
             </li>
          </ul>
           {% endif %}

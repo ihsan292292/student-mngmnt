@@ -28,7 +28,7 @@
                          <tr>
                         
                             <th>Message</th>
-                            <th class="text-right">Action</th>
+                            <th>Action</th>
                          </tr>
                       </thead>
                       <tbody>
@@ -36,7 +36,7 @@
                          <tr>
                             <td>{{i.message}}</td>
                             
-                            <td class="text-right"><div class="actions">
+                            <td><div class="actions">
                                 {% if i.status == 0 %}
                                 <a href="{% url 'staff_notification_mark_as_done' status=i.id %}" class="btn btn-danger">Mark As Done</a>
                                 {% else %}

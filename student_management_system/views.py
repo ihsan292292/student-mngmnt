@@ -5,6 +5,10 @@ from django.contrib import messages
 from app.models import CustumUser
 from django.contrib.auth.decorators import login_required
 
+
+def INDEX(request):
+    return render(request,'index.html')
+
 def BASE(request):
     return render(request,'base.html')
 
@@ -16,21 +20,23 @@ def dologin(request):
         user = EmailBackEnd.authenticate(request,
                                         username=request.POST.get('email'),
                                         password=request.POST.get('password'))
+
+
         if user!= None:
-            login(request,user)
-            user_type = user.user_type
-            if user_type == '1':
-                return redirect('hod_home')
-            elif user_type == '2':
-                return redirect('staff_home')
-            elif user_type == '3':
-                return redirect('student_home')
-            else:
+                login(request,user)
+                user_type = user.user_type
+                if user_type == '1':
+                    return redirect('hod_home')
+                elif user_type == '2':
+                    return redirect('staff_home')
+                elif user_type == '3':
+                    return redirect('student_home')
+                else:
+                    messages.error(request,"Email or Password are Invalid")
+                    return redirect('login')
+        else:
                 messages.error(request,"Email or Password are Invalid")
                 return redirect('login')
-        else:
-            messages.error(request,"Email or Password are Invalid")
-            return redirect('login')
 
 def dologout(request):
     logout(request)

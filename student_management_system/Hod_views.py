@@ -1,10 +1,15 @@
 from multiprocessing import context
 import profile
+import email
+import random
 from unicodedata import name
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from app.models import Course, CustumUser,Session_year,Student,Staff,Subject,Staff_Notification,Staff_leave,Staff_Feedback,Student_Notification,Student_Feedback,Student_leave,Attendance,Attendance_Report
 from django.contrib import messages
+from student_management_system.settings import EMAIL_HOST_USER
+from django.core.mail import send_mail
+
 
 
 @login_required(login_url='/')
@@ -14,6 +19,8 @@ def HOME(request):
     staff_count = Staff.objects.all().count()
     course_count = Course.objects.all().count()
     subject_count = Subject.objects.all().count()
+    student = Student.objects.all()
+    session = Session_year.objects.all()
 
     student_gender_male = Student.objects.filter(gender = 'Male').count()
     student_gender_female = Student.objects.filter(gender = 'Female').count()
@@ -25,7 +32,9 @@ def HOME(request):
         'course_count':course_count,
         'subject_count':subject_count,
         'student_gender_male':student_gender_male,
-        'student_gender_female':student_gender_female
+        'student_gender_female':student_gender_female,
+        'student':student,
+        'session':session
     }
 
     return render(request,'Hod/home.html',context)
@@ -41,7 +50,6 @@ def ADD_STUDENT(request):
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
         username = request.POST.get('username')
-        password = request.POST.get('password')
         address = request.POST.get('address')
         gender = request.POST.get('gender')
         course_id = request.POST.get('course_id')
@@ -61,10 +69,20 @@ def ADD_STUDENT(request):
                 username = username,
                 email = email,
                 profile_pic = profile_pic,
-                user_type = 3
+                user_type = 3,
             )
-            user.set_password(password)
+
+            pp = str(random.randint(100000,999999))
+            user.set_password(pp)
             user.save()
+            subject = "Welcome To CCSIT PERAMANGALAM"
+            message = 'Congratulations!!💥😁😎🙂🥲\n'\
+                'You are a CCSIT student now\n'\
+                    'username :'+str(user.email)+'\n' 'password :'+ pp+\
+                        '\n' 'WELCOME'
+            recepient = str(user.email)
+            send_mail(subject,message,EMAIL_HOST_USER,
+                    [recepient], fail_silently=False)
 
             course = Course.objects.get(id = course_id)
             session_year = Session_year.objects.get(id = session_year_id)
@@ -77,6 +95,7 @@ def ADD_STUDENT(request):
                 gender = gender,
             )
             student.save()
+
             messages.success(request,"Student are successfully saved")
             return redirect('add_student')
 
@@ -129,6 +148,16 @@ def UPDATE_STUDENT(request):
         user.email = email
         user.username = username
 
+        # Send Update
+        subject = "Welcome To CCSIT PERAMANGALAM"
+        message = 'Congratulations!!💥😁😎🙂🥲.\n'\
+                'You are a CCSIT student now\n'\
+                    'username :'+str(user.email)+'\n' 'password :'+str(user.password)+\
+                        '\n' 'WELCOME'
+        recepient = str(user.email)
+        send_mail(subject,message,EMAIL_HOST_USER,
+                    [recepient], fail_silently=False)
+
         if password !=None or password != "":
                 user.set_password(password)
 
@@ -136,7 +165,7 @@ def UPDATE_STUDENT(request):
                 user.profile_pic = profile_pic
         user.save()
 
-        student =Student.objects.get(admin = student_id)
+        student = Student.objects.get(admin = student_id)
         student.address = address
         student.gender = gender
 

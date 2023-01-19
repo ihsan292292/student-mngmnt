@@ -102,15 +102,17 @@ def STUDENT_VIEW_RESULT(request):
     student = Student.objects.get(admin = request.user.id)
 
     result = StudentResult.objects.filter(student_id = student)
+    
     for i in result:
         assignment_mark = i.assignment_mark
         exam_mark = i.exam_mark
 
-        mark = assignment_mark+exam_mark
+        i.mark = assignment_mark+exam_mark
+   
 
     context = {
         'result':result,
-        'mark':mark  
+        #'mark':mark  
     }
 
     return render(request,'Student/view_result.html',context)

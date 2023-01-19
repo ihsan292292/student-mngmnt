@@ -7,10 +7,11 @@ from .import views,Hod_views,Staff_views,Student_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.INDEX,name='index'),
     path('base/',views.BASE,name='base'),
 
     #login
-    path('',views.LOGIN,name='login'),
+    path('login/',views.LOGIN,name='login'),
     path('dologin',views.dologin,name='dologin'),
     path('dologout',views.dologout,name='logout'),
 

@@ -81,17 +81,19 @@
                         <table class="table table-hover table-center mb-0 datatable" id="table_id">
                           <thead>
                               <tr>
-                                <th style="width:60%">Feedback</th>
-                                
+                                <th style="width:60%">Name</th>
+                                <th style="width:60%">Notification</th>
                                 <th style="width:30%" class="text-right">Status</th>
                               </tr>
                           </thead>
                           <tbody>
-                            {% for i in feedback_history %}
+                            {% for i in see_student_notification %}
                               <tr>
-                                <td>{{i.feedback}}</td>
+                                <td>{{i.student_id.admin}}</td>
+                                <td>{{i.message}}</td>
+                                
 
-                                {% if i.feedback_reply == '' %}
+                                {% if i.status == 0 %}
                                 <td><span class="badge badge-danger">UnRead message</span></td>
                                 {% else %}
                                 <td><span class="badge badge-success"> Read message</span></td>

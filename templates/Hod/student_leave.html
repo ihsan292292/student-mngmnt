@@ -5,10 +5,10 @@
     <div class="page-header">
        <div class="row align-items-center">
           <div class="col">
-             <h3 class="page-title">Staffs</h3>
+             <h3 class="page-title">Student Leave</h3>
              <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item active">Courses</li>
+                <li class="breadcrumb-item"><a href="index.html">Student</a></li>
+                <li class="breadcrumb-item active">Leave</li>
              </ul>
           </div>
           <div class="col-auto text-right float-right ml-auto">
@@ -27,7 +27,7 @@
                       <thead>
                          <tr>
                             <th>ID</th>
-                            <th>Staff Name</th>
+                            <th>Student Name</th>
                             <th>Leave Date</th>
                             <th>Message</th>
                             <th class="text-right">Action</th>
@@ -37,7 +37,7 @@
                         {% for i in student_leave %}
                          <tr>
                             <td>{{i.id}}</td>
-                            <td>{{i.student_id.admin}}</td>
+                            <td>{{i.student.admin}}</td>
                             <td>{{i.date}}</td>
                             <td>{{i.message}}</td>
                             <td class="text-right">

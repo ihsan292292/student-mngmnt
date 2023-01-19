@@ -30,7 +30,7 @@
                             <th>Name</th>
                             <th>Created at</th>
                             <th>Updated at</th>
-                            <th class="text-right">Action</th>
+                            <th>Action</th>
                          </tr>
                       </thead>
                       <tbody>
@@ -40,12 +40,12 @@
                             <td>{{i.name}}</td>
                             <td>{{i.created_at}}</td>
                             <td>{{i.updated_at}}</td>
-                            <td class="text-right">
+                            <td>
                                <div class="actions">
                                   <a href="{% url 'edit_course' i.id %}" class="btn btn-sm bg-success-light mr-2">
                                   <i class="fas fa-pen"></i>
                                   </a>
-                                  <a href="{% url 'delete_course' i.id %}" class="btn btn-sm bg-danger-light">
+                                  <a href="{% url 'delete_course' i.id %}" class="btn btn-sm bg-danger-light" onclick="return confirm('Are you sure you want to delete this item?');">
                                   <i class="fas fa-trash"></i>
                                   </a>
                                </div>

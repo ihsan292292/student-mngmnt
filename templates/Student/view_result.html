@@ -41,7 +41,7 @@
                             <td>{{i.assignment_mark}}</td>
                             <td>{{i.exam_mark}}</td>
                             <td>
-                               {% if mark > 35 %}
+                               {% if i.mark >= 50 %}
                                 <span class="badge badge-success">PASS</span>
                                {% else %}
                                <span class="badge badge-danger">FAIL</span>

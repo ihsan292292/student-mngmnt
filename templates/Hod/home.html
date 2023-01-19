@@ -96,7 +96,6 @@
                 </div>
              </div>
           </div>
-          
           <div class="card-body">
              <div id="all_details"></div>
           </div>
@@ -182,129 +181,24 @@
                    </thead>
                    <tbody>
                       <tr>
+                        {% for i in student %}
                          <td class="text-nowrap">
-                            <div>PRE2209</div>
+                            <div>{{i.id}}</div>
                          </td>
-                         <td class="text-nowrap">John Smith</td>
-                         <td class="text-center">1185</td>
-                         <td class="text-center">98%</td>
+                         <td class="text-nowrap">{{i.admin.first_name}}&nbsp;{{i.admin.last_name}}</td>
+                         <td class="text-center">Not Updated</td>
+                         <td class="text-center">Not Updated</td>
                          <td class="text-right">
-                            <div>2019</div>
+                            <div>{{i.session_year_id.session_start}}</div>
                          </td>
                       </tr>
-                      <tr>
-                         <td class="text-nowrap">
-                            <div>PRE1245</div>
-                         </td>
-                         <td class="text-nowrap">Jolie Hoskins</td>
-                         <td class="text-center">1195</td>
-                         <td class="text-center">99.5%</td>
-                         <td class="text-right">
-                            <div>2018</div>
-                         </td>
-                      </tr>
-                      <tr>
-                         <td class="text-nowrap">
-                            <div>PRE1625</div>
-                         </td>
-                         <td class="text-nowrap">Pennington Joy</td>
-                         <td class="text-center">1196</td>
-                         <td class="text-center">99.6%</td>
-                         <td class="text-right">
-                            <div>2017</div>
-                         </td>
-                      </tr>
-                      <tr>
-                         <td class="text-nowrap">
-                            <div>PRE2516</div>
-                         </td>
-                         <td class="text-nowrap">Millie Marsden</td>
-                         <td class="text-center">1187</td>
-                         <td class="text-center">98.2%</td>
-                         <td class="text-right">
-                            <div>2016</div>
-                         </td>
-                      </tr>
-                      <tr>
-                         <td class="text-nowrap">
-                            <div>PRE2209</div>
-                         </td>
-                         <td class="text-nowrap">John Smith</td>
-                         <td class="text-center">1185</td>
-                         <td class="text-center">98%</td>
-                         <td class="text-right">
-                            <div>2015</div>
-                         </td>
-                      </tr>
+                      {% endfor %}
                    </tbody>
                 </table>
              </div>
           </div>
        </div>
     </div>
-    <div class="col-md-6 d-flex">
-       <div class="card flex-fill">
-          <div class="card-header">
-             <h5 class="card-title">Student Activity</h5>
-          </div>
-          <div class="card-body">
-             <ul class="activity-feed">
-                <li class="feed-item">
-                   <div class="feed-date">Apr 13</div>
-                   <span class="feed-text"><a>John Doe</a> won 1st place in <a>"Chess"</a></span>
-                </li>
-                <li class="feed-item">
-                   <div class="feed-date">Mar 21</div>
-                   <span class="feed-text"><a>Justin Lee</a> participated in <a href="invoice.html">"Carrom"</a></span>
-                </li>
-                <li class="feed-item">
-                   <div class="feed-date">Feb 2</div>
-                   <span class="feed-text"><a>Justin Lee</a>attended internation conference in <a href="profile.html">"St.John School"</a></span>
-                </li>
-                <li class="feed-item">
-                   <div class="feed-date">Apr 13</div>
-                   <span class="feed-text"><a>John Doe</a> won 1st place in <a>"Chess"</a></span>
-                </li>
-                <li class="feed-item">
-                   <div class="feed-date">Mar 21</div>
-                   <span class="feed-text"><a>Justin Lee</a> participated in <a href="invoice.html">"Carrom"</a></span>
-                </li>
-             </ul>
-          </div>
-       </div>
-    </div>
- </div>
- <div class="row">
-    <div class="col-xl-3 col-sm-6 col-12">
-       <div class="card flex-fill fb sm-box">
-          <i class="fab fa-facebook"></i>
-          <h6>50,095</h6>
-          <p>Likes</p>
-       </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 col-12">
-       <div class="card flex-fill twitter sm-box">
-          <i class="fab fa-twitter"></i>
-          <h6>48,596</h6>
-          <p>Follows</p>
-       </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 col-12">
-       <div class="card flex-fill insta sm-box">
-          <i class="fab fa-instagram"></i>
-          <h6>52,085</h6>
-          <p>Follows</p>
-       </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 col-12">
-       <div class="card flex-fill linkedin sm-box">
-          <i class="fab fa-linkedin-in"></i>
-          <h6>69,050</h6>
-          <p>Follows</p>
-       </div>
-    </div>
- </div>
-</div>
 
 {% include 'includes/chart.html' %}
 {% endblock %}

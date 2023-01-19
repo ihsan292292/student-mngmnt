@@ -5,10 +5,10 @@
     <div class="page-header">
        <div class="row align-items-center">
           <div class="col">
-             <h3 class="page-title">Staff</h3>
+             <h3 class="page-title">Send Staff Notification</h3>
              <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item active">Staffs</li>
+                <li class="breadcrumb-item active">Staff</li>
              </ul>
           </div>
           <div class="col-auto text-right float-right ml-auto">
@@ -81,16 +81,16 @@
                         <table class="table table-hover table-center mb-0 datatable" id="table_id">
                           <thead>
                               <tr>
-                                <th style="width:60%">Message</th>
-                                
+                                <th style="width:60%">Name</th>
+                                <th style="width:60%">Message</th> 
                                 <th style="width:30%" class="text-right">Status</th>
                               </tr>
                           </thead>
                           <tbody>
                             {% for i in see_notification %}
                               <tr>
+                                <td>{{i.staff_id.admin}}</td>
                                 <td>{{i.message}}</td>
-
                                 {% if i.status == 0 %}
                                 <td><span class="badge badge-danger">UnRead message</span></td>
                                 {% else %}
