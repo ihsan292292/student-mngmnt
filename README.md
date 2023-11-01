@@ -1,8 +1,7 @@
 # Student Management System
 
-!([https://your-image-link-here.com](https://drive.google.com/file/d/1gfbwxOOftjbu3tLXHPgCWZmvYKUeiq_8/view?usp=sharing))
 
-[Watch the video](https://www.youtube.com/your-video-url](https://drive.google.com/file/d/1gfbwxOOftjbu3tLXHPgCWZmvYKUeiq_8/view?usp=sharing)
+https://github.com/ihsan292292/student-mngmnt/assets/97184876/00a6445f-0eaf-4965-baa8-088b682bafce
 
 
 The Student Management System is a comprehensive Python Django project designed to streamline the management of student and staff records, attendance tracking, and result management. It provides a user-friendly web interface for administrators, primarily the Head of Department (HOD), to efficiently handle all aspects related to students, staff, courses, subjects, attendance, and results.
