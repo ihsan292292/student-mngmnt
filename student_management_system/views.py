@@ -20,8 +20,6 @@ def dologin(request):
         user = EmailBackEnd.authenticate(request,
                                         username=request.POST.get('email'),
                                         password=request.POST.get('password'))
-
-
         if user!= None:
                 login(request,user)
                 user_type = user.user_type
@@ -71,12 +69,11 @@ def PROFILE_UPDATE(request):
             custumuser.last_name = last_name
             custumuser.profile_pic = profile_pic
 
-            if password !=None or password != "":
+            if password != None or password != "":
                 custumuser.set_password(password)
 
             if profile_pic != None or profile_pic != "":
-                custumuser.profile_pic = profile_pic
-
+                custumuser.profile_pic = profile_pic 
             custumuser.save()
             messages.success(request,'Your profile updated successfully !')
             return redirect('profile')
